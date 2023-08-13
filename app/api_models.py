@@ -24,3 +24,21 @@ produto_model = api.model("produto", {
     "dimensao": fields.List(fields.Nested(dimensao_model)),
     "peso": fields.Integer
     })
+
+cotacao_model = api.model("Cotacao", {
+    #"id": fields.Integer,
+    "nome_transportadora": fields.String,
+    "valor_frete": fields.Float,
+    "prazo_entrega": fields.Integer
+    })
+
+produto_input_model = api.model("ProdutoInput", {
+    "dimensao": fields.List(fields.Nested(dimensao_model)),
+    "peso": fields.Integer
+    })
+
+cotacao_input_model = api.model("CotacaoInput", {
+    "nome_transportadora": fields.String,
+    "valor_frete": fields.Float,
+    "prazo_entrega": fields.Integer
+    })

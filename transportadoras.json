@@ -1,0 +1,24 @@
+{
+    "transportadoras_db": [
+      {
+        "altura_max": 200,
+        "altura_min": 10,
+        "constante_calculo": 0.3,
+        "id": 1,
+        "largura_max": 140,
+        "largura_min": 6,
+        "prazo_entrega": "6 dias",
+        "title": "Entrega Ninja"
+      },
+      {
+        "altura_max": 140,
+        "altura_min": 5,
+        "constante_calculo": 0.2,
+        "id": 2,
+        "largura_max": 125,
+        "largura_min": 13,
+        "prazo_entrega": "4 dias",
+        "title": "Entrega KaBuM"
+      }
+    ]
+  }
