@@ -12,6 +12,16 @@ transportadora_model = api.model("Transportadora", {
     "prazo_entrega": fields.Integer
     })
 
+transportadora_input_model = api.model("TransportadoraInput", {
+    "nome": fields.String,
+    "altura_max": fields.Integer,
+    "altura_min": fields.Integer,
+    "largura_max": fields.Integer,
+    "largura_min": fields.Integer,
+    "constante_frete": fields.Integer,
+    "prazo_entrega": fields.Integer
+    })
+
 dimensao_model = api.model("Dimensao", {
     #"id": fields.Integer,
     #"nome": fields.String,

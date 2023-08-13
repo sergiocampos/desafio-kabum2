@@ -11,6 +11,7 @@ from .api_models import cotacao_model
 from .extensions import db
 from .api_models import cotacao_input_model
 from .api_models import produto_input_model
+from .api_models import transportadora_input_model
 import json
 from flask import jsonify
 
@@ -18,15 +19,21 @@ ns = Namespace("api")
 
 @ns.route("/transportadoras")
 class TransportadoraAPI(Resource):
-    #@ns.marshal_list_with(transportadora_model)
+    @ns.marshal_list_with(transportadora_model)
     def get(self):
-        with open("transportadoras.json") as file:
-            data = json.load(file)
-        return data
+        #with open("transportadoras.json") as file:
+        #    data = json.load(file)
+        
+        return Transportadora.query.all()
     
-    @ns.expect(transportadora_model)
+    @ns.expect(transportadora_input_model)
+    @ns.marshal_with(transportadora_model)
     def post(self):
-        return {}
+        print(ns.payload)
+        transportadora = Transportadora(nome=ns.payload["nome"], altura_max=ns.payload["altura_max"], altura_min=ns.payload["altura_min"], largura_max=ns.payload["largura_max"], largura_min=ns.payload["largura_min"], constante_frete=ns.payload["constante_frete"], prazo_entrega=ns.payload["prazo_entrega"])
+        db.session.add(transportadora)
+        db.session.commit()
+        return transportadora, 201
 
 @ns.route("/produto")
 class ProdutoAPI(Resource):
@@ -107,4 +114,4 @@ class CotacaoAPI(Resource):
         data = json.dumps(cotacoes, indent=4)
         print(data)
 
-        return (data)
+        return (cotacoes)
